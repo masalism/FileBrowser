@@ -57,7 +57,7 @@
             }
         }
 
-        // dir kurimas
+        // folderio kurimas
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST['create']) && $_POST['create'] != "") {
                 $createDirectory = './' . $_GET['path'] . $_POST['create'];
@@ -99,8 +99,6 @@
         echo "<table class=\"table table-striped mt-5\"><thead class=\"thead-dark\"><tr><th>Type</th><th>Name<th>Action</th></th></thead>";
         echo "<tbody>";
 
-        // $backButton;
-
         foreach ($data as $element) {
             $value = (is_dir($path . $element)
                 ? '<a href="' . (isset($_GET['path'])
@@ -117,10 +115,6 @@
                 <input type="hidden" name="download" value=' . $element . '>
                 <button type="submit" class="btn btn-primary btn-sm">Download</button>
             </form>';
-
-            // if ($element == "..") {
-            //     $backButton = $element;
-            // }
             
             if ($element != ".." && $element != ".") {
                 echo "<tr>";
@@ -177,7 +171,7 @@
             <button type="submit" class="btn btn-secondary">Sukurti direktoriją</button>
         </form>
 
-        <form class="logout" action="code.php" method="POST">
+        <form action="code.php" method="POST">
             <input type="hidden" name="logout">
             <button type="submit" class="btn btn-danger btn-lg mt-2">Atsijungti</button>
         </form>
